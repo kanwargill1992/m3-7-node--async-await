@@ -1,6 +1,22 @@
-const request = require('request-promise');
+const request = require("request-promise");
 
 // getDadJoke
+const options = {
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+  },
+  json: true,
+};
+getDadJoke = async () => {
+  try {
+    const newJoke = await request(options);
+    return newJoke.joke;
+  } catch (err) {
+    console.log("error", err);
+  }
+};
 
 // 4.1
-// getJoke().then((data) => console.log(data));
+// getDadJoke().then((data) => console.log(data));
+module.exports = { getDadJoke };
